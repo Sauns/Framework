@@ -9,19 +9,43 @@ const isDev = !isProd
 
 const filename = ext => isDev ? `bundle.${ext}` : `bundle.[hash].${ext}`
 
+// const jsLoaders = () => {
+// 	const loaders = [
+// 		{
+// 			loader: 'babel-loader',
+// 			options: {
+// 				presets: ['@babel/preset-env', 'es2015'],
+// 				//plugins: ['@babel/plugin-proposal-class-properties'],
+// 				plugins: [
+// 					[require('@babel/plugin-proposal-class-properties'), {loose: true}],
+// 				],
+// 			},
+
+// 		},
+// 	]
+
+// 	if ( isDev ) {
+// 		loaders.push( 'eslint-loader' )
+// 	}
+// }
+
+
 const jsLoaders = () => {
 	const loaders = [
 		{
 			loader: 'babel-loader',
 			options: {
 				presets: ['@babel/preset-env'],
-			},
-		},
+				plugins: ['@babel/plugin-proposal-class-properties']
+			}
+		}
 	]
 
-	if ( isDev ) {
-		loaders.push( 'eslint-loader' )
+	if (isDev) {
+		loaders.push('eslint-loader')
 	}
+
+	return loaders
 }
 
 module.exports = {

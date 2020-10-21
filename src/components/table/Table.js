@@ -1,7 +1,10 @@
-import {ExcelComponent} from '../../core/ExcelComponent';
+import {ExcelComponent} from '@core/ExcelComponent';
+import {createTable} from '@/components/table/table.template.js'
 
 export class Table extends ExcelComponent {
-	toHTML( ) {
-		return '<h1>Table</h1>'
+	static className = 'excel__table'
+
+	toHTML() {
+		return createTable( 20 )
 	}
 }
